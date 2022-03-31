@@ -12,10 +12,10 @@ octave = start[1]
 note = start[0]
 samplerate = 44100
 data = np.zeros((samplerate, 2))
+Path(Path.cwd(), 'samples').mkdir(exist_ok=True)
 while True:
     file = Path(pth, ''.join([vel, ' ', note, octave, '.flac']))
     file_out = Path(Path.cwd(), 'samples', file.stem + '.wav')
-    file_out.parent.mkdir(exist_ok=True)
     if file.exists():
         data, samplerate = sf.read(file)
         print(f"{file.stem} exists")
